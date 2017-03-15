@@ -4,7 +4,6 @@ import com.sdkbox.live.utils.Log;
 
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -13,7 +12,7 @@ import java.net.URL;
 
 public class NetReq {
 
-    private static String host = "http://120.55.89.27:5001/sdkboxlive/data";
+    private static String host = "http://120.55.89.27:5001/sdkboxlive/network";
 
     static public void req(final String json) {
         new Thread(new Runnable() {

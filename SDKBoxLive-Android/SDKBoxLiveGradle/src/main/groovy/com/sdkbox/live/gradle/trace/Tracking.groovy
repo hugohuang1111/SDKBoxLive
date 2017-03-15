@@ -10,7 +10,7 @@ public class Tracking {
     def platform = 'android'
     def phase = 'compile'
 
-    private static String host = "http://120.55.89.27:5001/sdkboxlive/data"
+    private static String host = "http://120.55.89.27:5001/sdkboxlive/sdk"
     private static Tracking gInstance;
 
     public static Tracking getInstance() {
