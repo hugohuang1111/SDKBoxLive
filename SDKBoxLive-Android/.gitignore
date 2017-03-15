@@ -1,0 +1,14 @@
+*.iml
+*.bak
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+repo
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
