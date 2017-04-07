@@ -123,6 +123,24 @@ public class SDKBoxTransform extends Transform {
         fos.close();
     }
 
+    static private boolean needRemove(def className, Rule.PackageRule pRule) {
+        if (null == pRule) {
+            return false
+        }
+        if (null == pRule.classRules) {
+            return false
+        }
+
+        for (Rule.ClassRule cRule : pRule.classRules) {
+            if (className.contains(cRule.targetClass.owner)) {
+                Log.debug('need remove class:' + className)
+                return true
+            }
+        }
+
+        return false
+    }
+
     static private byte[] handleClassByte(InputStream is, Rule.PackageRule pRule) {
         byte[] b = null
         try {
@@ -175,6 +193,9 @@ public class SDKBoxTransform extends Transform {
         while (enumeration.hasMoreElements()) {
             JarEntry jarEntry = (JarEntry) enumeration.nextElement()
             String entryName = jarEntry.getName()
+            if (needRemove(entryName, pRule)) {
+                continue;
+            }
             ZipEntry zipEntry = new ZipEntry(entryName);
             jarOutputStream.putNextEntry(zipEntry);
 

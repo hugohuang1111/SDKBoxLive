@@ -1,8 +1,12 @@
 package com.sdkbox.live.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by hugo on 09/03/2017.
@@ -11,13 +15,7 @@ import android.content.pm.PackageManager;
 public class Utils {
 
     static public boolean isNull(String s) {
-        if (null == s) {
-            return true;
-        }
-        if (0 == s.length()) {
-            return true;
-        }
-        return false;
+        return null == s || 0 == s.length();
     }
 
     static public String readMetaData(Context ctx, String tag) {
@@ -31,6 +29,16 @@ public class Utils {
         }
 
         return value;
+    }
+
+    static public void run(int millisecond, final Runnable r) {
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                r.run();
+            }
+        }, millisecond);
     }
 
 }

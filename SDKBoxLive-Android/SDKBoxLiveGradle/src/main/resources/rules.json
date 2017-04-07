@@ -1,16 +1,20 @@
 {
-    "packageRule": [{
-        "name": "inmobi",
-        "methodRules": [{
-            "targetMethod": {
-                "owner": "java/net/URL",
-                "func": "openConnection",
-                "signature": "()Ljava/net/URLConnection;"
-            },
-            "newMethod": {
-                "owner": "com/sdkbox/live/bridge/InMobiBridge",
-                "func": "URL_openConnection"
-            }
-        }]
-    }]
+    "packageRule": [
+        {
+            "name": "inmobi",
+            "methodRules": [
+                {
+                    "targetMethod": {
+                        "owner": "java/net/URL",
+                        "func": "openConnection",
+                        "signature": "()Ljava/net/URLConnection;"
+                    },
+                    "newMethod": {
+                        "owner": "com/sdkbox/live/bridge/InMobiBridge",
+                        "func": "URL_openConnection"
+                    }
+                }
+            ]
+        }
+    ]
 }

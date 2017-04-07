@@ -1,9 +1,7 @@
 package com.sdkbox.live.trace;
 
-import com.sdkbox.live.SDKBox;
 import com.sdkbox.live.net.NetReq;
 
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
@@ -19,6 +17,6 @@ public class Trace {
         if (0 == j.length()) {
             return;
         }
-        NetReq.req(j);
+        NetReq.httpPost(NetReq.HOST_LIVE_NETWORK, j, null);
     }
 }
