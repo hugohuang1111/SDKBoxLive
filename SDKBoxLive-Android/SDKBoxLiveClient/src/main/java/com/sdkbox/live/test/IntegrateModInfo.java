@@ -6,5 +6,6 @@ package com.sdkbox.live.test;
 
 public class IntegrateModInfo {
     public String name;
-    public String error;
+    public int error;
+    public String description;
 }

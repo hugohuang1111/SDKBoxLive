@@ -40,11 +40,7 @@ public class SDKBox {
                     return;
                 }
 
-                ReqParams params = new ReqParams();
-                params.phase = "runtime";
-                params.packageName = packageName;
-
-                NetReq.httpGet(NetReq.HOST_LIVE_DEBUG, params.toString(), new NetReq.IResult() {
+                NetReq.httpGet(NetReq.HOST_LIVE_DEBUG, "app_id=" + appID, new NetReq.IResult() {
                     @Override
                     public void onResponse(String resp) {
                         if (null == resp) {

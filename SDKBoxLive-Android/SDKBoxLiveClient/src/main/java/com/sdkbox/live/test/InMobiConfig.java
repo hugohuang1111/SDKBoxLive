@@ -5,6 +5,6 @@ package com.sdkbox.live.test;
  */
 
 public class InMobiConfig {
-    public String banner;
-    public String interstitial;
+    public String adType;
+    public String id;
 }

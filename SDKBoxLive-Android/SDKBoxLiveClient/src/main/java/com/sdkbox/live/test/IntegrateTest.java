@@ -33,7 +33,8 @@ public class IntegrateTest {
     }
 
     public void test(String[] plugins, String resultJson) {
-        String cfgJson = getJsonString(resultJson, "test");
+        String cfgJson = resultJson;
+        // getJsonString(resultJson, "test");
         for (String plugin : plugins) {
             runTestCase(plugin, getJsonString(cfgJson, plugin));
         }
@@ -64,8 +65,8 @@ public class IntegrateTest {
             test = (BaseTest) con.newInstance(activity, new BaseTest.Result() {
 
                 @Override
-                public void onResult(String plugin, String module, String error) {
-                    addResult(plugin, module, error);
+                public void onResult(String plugin, String module, int err, String desc) {
+                    addResult(plugin, module, err, desc);
                 }
 
             });
@@ -75,7 +76,7 @@ public class IntegrateTest {
         }
     }
 
-    private void addResult(String plugin, String module, String error) {
+    private void addResult(String plugin, String module, int error, String desc) {
         try {
             needUpload = true;
             if (null == result.plugins) {
@@ -92,6 +93,7 @@ public class IntegrateTest {
                 m = new IntegrateModInfo();
             }
             m.name = module;
+            m.description = desc;
             m.error = error;
             p.mods.put(module, m);
             result.plugins.put(plugin, p);

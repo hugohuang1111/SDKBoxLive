@@ -10,7 +10,7 @@ import android.app.Activity;
 public class BaseTest {
 
     public interface Result {
-        public void onResult(String plugin, String module, String error);
+        public void onResult(String plugin, String module, int err, String desc);
     }
 
     protected Activity activity;
@@ -26,9 +26,9 @@ public class BaseTest {
     public void run(String config) {
     }
 
-    protected void onResult(String m, String err) {
+    protected void onResult(String m, int err, String desc) {
         if (null != result) {
-            result.onResult(plugin, m, err);
+            result.onResult(plugin, m, err, desc);
         }
     }
 

@@ -32,11 +32,10 @@ public class InMobiTest extends BaseTest {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (!Utils.isNull(inmobiCfg.interstitial)) {
-                    testInterstitial(Long.parseLong(inmobiCfg.interstitial, 10));
-                }
-                if (!Utils.isNull(inmobiCfg.banner)) {
-                    testBanner(Long.parseLong(inmobiCfg.banner, 10));
+                if ("interstitial".equalsIgnoreCase(inmobiCfg.adType)) {
+                    testInterstitial(Long.parseLong(inmobiCfg.id, 10));
+                } else if ("banner".equalsIgnoreCase(inmobiCfg.adType)) {
+                    testBanner(Long.parseLong(inmobiCfg.id, 10));
                 }
             }
         });
@@ -48,7 +47,7 @@ public class InMobiTest extends BaseTest {
                 new InMobiInterstitial.InterstitialAdListener2() {
                     @Override
                     public void onAdLoadFailed(InMobiInterstitial inMobiInterstitial, InMobiAdRequestStatus inMobiAdRequestStatus) {
-                        onResult("interstitial", "load interstitial failed");
+                        onResult("interstitial", 1, "load interstitial failed");
                         interstitial = null;
                     }
 
@@ -59,7 +58,7 @@ public class InMobiTest extends BaseTest {
                     @Override
                     public void onAdLoadSucceeded(InMobiInterstitial inMobiInterstitial) {
                         interstitial.show();
-                        onResult("interstitial", "load interstitial succeeded");
+                        onResult("interstitial", 0, "load interstitial succeeded");
                     }
 
                     @Override
@@ -68,7 +67,7 @@ public class InMobiTest extends BaseTest {
 
                     @Override
                     public void onAdDisplayFailed(InMobiInterstitial inMobiInterstitial) {
-                        onResult("interstitial", "show interstitial failed");
+                        onResult("interstitial", 1, "show interstitial failed");
                         interstitial = null;
                     }
 
@@ -78,7 +77,7 @@ public class InMobiTest extends BaseTest {
 
                     @Override
                     public void onAdDisplayed(InMobiInterstitial inMobiInterstitial) {
-                        onResult("interstitial", "show interstitial succeeded");
+                        onResult("interstitial", 0, "show interstitial succeeded");
                         interstitial = null;
                     }
 
@@ -105,17 +104,17 @@ public class InMobiTest extends BaseTest {
         banner.setListener(new InMobiBanner.BannerAdListener() {
             @Override
             public void onAdLoadSucceeded(InMobiBanner inMobiBanner) {
-                onResult("banner", "load banner succeeded");
+                onResult("banner", 0, "load banner succeeded");
             }
 
             @Override
             public void onAdLoadFailed(InMobiBanner inMobiBanner, InMobiAdRequestStatus inMobiAdRequestStatus) {
-                onResult("banner", "load banner failed");
+                onResult("banner", 1, "load banner failed");
             }
 
             @Override
             public void onAdDisplayed(InMobiBanner inMobiBanner) {
-                onResult("banner", "show banner succeeded");
+                onResult("banner", 0, "show banner succeeded");
             }
 
             @Override
