@@ -43,8 +43,8 @@ buildscript {
 
 apply plugin: 'com.sdkbox.live.gradle'
 SDKBox {
-    appID 'appID1234567890'
-    appSec 'appSec93234873'
+    appID 'ba89510ed11b84d4814c9209fc2c87be'
+    appSec '5f726c376ea2cc95306595ccc16afdfa'
 }
 
 // SDKBox End */
